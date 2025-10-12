@@ -1,0 +1,1708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoFix Kenya - Professional Car & Motorcycle Repair Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #e63946;
+            --secondary: #1d3557;
+            --accent: #f1faee;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #2a9d8f;
+            --warning: #e9c46a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(to right, var(--secondary), var(--primary));
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            font-size: 2rem;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        .slogan {
+            font-style: italic;
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--accent);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: width 0.3s;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Search Panel */
+        .search-panel {
+            background-color: var(--accent);
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .search-container {
+            display: flex;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .search-container input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            font-size: 1rem;
+        }
+        
+        .search-container button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .search-container button:hover {
+            background-color: #c1121f;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(29, 53, 87, 0.8), rgba(29, 53, 87, 0.9)), url('https://images.unsplash.com/photo-1622737133809-d95047b9e673?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: #c1121f;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-whatsapp {
+            background-color: #25D366;
+            margin-left: 10px;
+        }
+        
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #14213d;
+        }
+        
+        .btn-warning {
+            background-color: var(--warning);
+            color: var(--dark);
+        }
+        
+        .btn-warning:hover {
+            background-color: #d4ac3a;
+        }
+        
+        /* Categories Section */
+        .categories {
+            padding: 3rem 0;
+            background-color: white;
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .category-card {
+            background-color: var(--light);
+            border-radius: 10px;
+            padding: 2rem 1rem;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .category-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .category-card h3 {
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Services Section */
+        .section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .service-content {
+            padding: 1.5rem;
+        }
+        
+        .service-content h3 {
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .service-content p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .service-details {
+            margin: 1rem 0;
+            padding: 1rem;
+            background-color: var(--accent);
+            border-radius: 5px;
+        }
+        
+        .service-details ul {
+            list-style-type: none;
+        }
+        
+        .service-details li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .service-details i {
+            color: var(--success);
+        }
+        
+        .service-price {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Products Section */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .product-content {
+            padding: 1.5rem;
+        }
+        
+        .product-content h3 {
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .product-content p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .product-details {
+            margin: 1rem 0;
+            padding: 1rem;
+            background-color: var(--accent);
+            border-radius: 5px;
+        }
+        
+        .product-details ul {
+            list-style-type: none;
+        }
+        
+        .product-details li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .product-details i {
+            color: var(--success);
+        }
+        
+        .product-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .price {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        
+        /* Gallery Section */
+        .gallery {
+            background-color: var(--light);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .gallery-item {
+            height: 200px;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        .gallery-overlay i {
+            color: white;
+            font-size: 2rem;
+        }
+        
+        /* Inspection Section */
+        .inspection {
+            background-color: white;
+        }
+        
+        .inspection-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .inspection-tab {
+            padding: 1rem 2rem;
+            background: none;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--dark);
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .inspection-tab.active {
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+        }
+        
+        .inspection-tab:hover {
+            color: var(--primary);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .inspection-form {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--light);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group {
+            flex: 1;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: white;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .form-check {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-check input {
+            margin: 0;
+        }
+        
+        /* Emergency Contact */
+        .emergency-contact {
+            background-color: #fff8e1;
+            border-left: 5px solid var(--warning);
+            padding: 1.5rem;
+            border-radius: 5px;
+            margin-top: 2rem;
+        }
+        
+        .emergency-contact h3 {
+            color: var(--dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .emergency-contact p {
+            margin-bottom: 1rem;
+        }
+        
+        /* Inspection Locations */
+        .inspection-locations {
+            background-color: var(--light);
+        }
+        
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .location-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .location-card h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .location-info {
+            margin-bottom: 1.5rem;
+        }
+        
+        .location-info p {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .location-info i {
+            color: var(--primary);
+            width: 20px;
+        }
+        
+        /* Booking Section */
+        .booking {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .booking .section-title h2 {
+            color: white;
+        }
+        
+        .booking .section-title p {
+            color: #ccc;
+        }
+        
+        .booking-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+        }
+        
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        .footer-column p, .footer-column a {
+            color: #ccc;
+            margin-bottom: 0.8rem;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #999;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                display: block;
+                margin: 10px auto;
+                width: 80%;
+            }
+            
+            .btn-whatsapp {
+                margin-left: 0;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .inspection-tabs {
+                flex-direction: column;
+            }
+            
+            .inspection-tab {
+                justify-content: center;
+            }
+        }
+        
+        /* Search Results */
+        .search-results {
+            display: none;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-height: 300px;
+            overflow-y: auto;
+            position: absolute;
+            width: 100%;
+            z-index: 100;
+            top: 100%;
+        }
+        
+        .search-result-item {
+            padding: 10px 15px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .search-result-item:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-tools"></i>
+                    <div>
+                        <h1>Auto<span>Fix</span> Kenya</h1>
+                        <div class="slogan">Your Trusted Automotive Partner in Kenya</div>
+                    </div>
+                </div>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#inspection">Inspection</a></li>
+                        <li><a href="#booking">Book Service</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Search Panel -->
+    <section class="search-panel">
+        <div class="container">
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search for services, products, or parts...">
+                <button id="searchButton"><i class="fas fa-search"></i></button>
+                <div class="search-results" id="searchResults"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Professional Car & Motorcycle Repair Services in Kenya</h2>
+            <p>We provide high-quality automotive repair and maintenance services with genuine parts and expert technicians. Your vehicle is in safe hands with AutoFix Kenya.</p>
+            <a href="#booking" class="btn">Book Service Now</a>
+            <a href="https://wa.me/254712345678?text=Hello%20AutoFix%20Kenya,%20I%20need%20assistance%20with%20my%20vehicle" class="btn btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Service Categories</h2>
+                <p>Comprehensive automotive solutions for all your needs</p>
+            </div>
+            <div class="categories-grid">
+                <div class="category-card" data-category="engine">
+                    <i class="fas fa-cogs"></i>
+                    <h3>Engine Services</h3>
+                    <p>Diagnostics, repair & maintenance</p>
+                </div>
+                <div class="category-card" data-category="brakes">
+                    <i class="fas fa-stop-circle"></i>
+                    <h3>Brake Systems</h3>
+                    <p>Inspection, repair & replacement</p>
+                </div>
+                <div class="category-card" data-category="electrical">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Electrical Systems</h3>
+                    <p>Wiring, battery & components</p>
+                </div>
+                <div class="category-card" data-category="suspension">
+                    <i class="fas fa-car-side"></i>
+                    <h3>Suspension & Steering</h3>
+                    <p>Alignment, shocks & struts</p>
+                </div>
+                <div class="category-card" data-category="tires">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <h3>Tire Services</h3>
+                    <p>Repair, balancing & replacement</p>
+                </div>
+                <div class="category-card" data-category="maintenance">
+                    <i class="fas fa-oil-can"></i>
+                    <h3>Maintenance</h3>
+                    <p>Oil changes, filters & fluids</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>We offer comprehensive automotive repair and maintenance services for both cars and motorcycles</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card" data-category="engine">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1622737133809-d95047b9e673?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80');"></div>
+                    <div class="service-content">
+                        <h3><i class="fas fa-cogs"></i> Engine Diagnostics & Repair</h3>
+                        <p>Comprehensive engine diagnostics and repair services to keep your vehicle running smoothly.</p>
+                        <div class="service-details">
+                            <ul>
+                                <li><i class="fas fa-check-circle"></i> Computerized engine diagnostics</li>
+                                <li><i class="fas fa-check-circle"></i> Engine tune-ups and performance optimization</li>
+                                <li><i class="fas fa-check-circle"></i> Fuel system cleaning and repair</li>
+                                <li><i class="fas fa-check-circle"></i> Timing belt replacement</li>
+                                <li><i class="fas fa-check-circle"></i> Engine overheating solutions</li>
+                            </ul>
+                        </div>
+                        <div class="service-price">From KES 2,500</div>
+                        <button class="btn book-service" data-service="Engine Diagnostics & Repair">Book This Service</button>
+                    </div>
+                </div>
+                <div class="service-card" data-category="brakes">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1563720223485-884d6d3e8c5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80');"></div>
+                    <div class="service-content">
+                        <h3><i class="fas fa-stop-circle"></i> Brake System Service</h3>
+                        <p>Complete brake inspection, repair, and replacement to ensure your safety on the road.</p>
+                        <div class="service-details">
+                            <ul>
+                                <li><i class="fas fa-check-circle"></i> Brake pad and shoe replacement</li>
+                                <li><i class="fas fa-check-circle"></i> Rotor and drum resurfacing</li>
+                                <li><i class="fas fa-check-circle"></i> Brake fluid flush and replacement</li>
+                                <li><i class="fas fa-check-circle"></i> ABS system diagnostics and repair</li>
+                                <li><i class="fas fa-check-circle"></i> Emergency brake adjustment</li>
+                            </ul>
+                        </div>
+                        <div class="service-price">From KES 3,000</div>
+                        <button class="btn book-service" data-service="Brake System Service">Book This Service</button>
+                    </div>
+                </div>
+                <div class="service-card" data-category="maintenance">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1622737133809-d95047b9e673?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80');"></div>
+                    <div class="service-content">
+                        <h3><i class="fas fa-oil-can"></i> Oil Change & Lubrication</h3>
+                        <p>Regular oil changes and lubrication services to extend your engine's life and improve performance.</p>
+                        <div class="service-details">
+                            <ul>
+                                <li><i class="fas fa-check-circle"></i> Synthetic and conventional oil changes</li>
+                                <li><i class="fas fa-check-circle"></i> Oil filter replacement</li>
+                                <li><i class="fas fa-check-circle"></i> Chassis lubrication</li>
+                                <li><i class="fas fa-check-circle"></i> Fluid level checks and top-ups</li>
+                                <li><i class="fas fa-check-circle"></i> Multi-point vehicle inspection</li>
+                            </ul>
+                        </div>
+                        <div class="service-price">From KES 1,500</div>
+                        <button class="btn book-service" data-service="Oil Change & Lubrication">Book This Service</button>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="#services" class="btn btn-secondary">View All Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="section" id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Auto Parts & Products</h2>
+                <p>We offer genuine and high-quality auto parts and accessories for cars and motorcycles</p>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80');"></div>
+                    <div class="product-content">
+                        <h3><i class="fas fa-oil-can"></i> Engine Oil</h3>
+                        <p>High-quality engine oil for optimal performance and engine protection.</p>
+                        <div class="product-details">
+                            <ul>
+                                <li><i class="fas fa-check"></i> Synthetic blend for better performance</li>
+                                <li><i class="fas fa-check"></i> Reduces engine wear and tear</li>
+                                <li><i class="fas fa-check"></i> Improves fuel economy</li>
+                                <li><i class="fas fa-check"></i> Compatible with all vehicle types</li>
+                            </ul>
+                        </div>
+                        <div class="product-price">
+                            <span class="price">KES 1,200 - 3,500</span>
+                            <button class="btn buy-product" data-product="Engine Oil">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80');"></div>
+                    <div class="product-content">
+                        <h3><i class="fas fa-stop-circle"></i> Brake Pads</h3>
+                        <p>Durable brake pads for reliable stopping power and safety.</p>
+                        <div class="product-details">
+                            <ul>
+                                <li><i class="fas fa-check"></i> Ceramic compound for quiet operation</li>
+                                <li><i class="fas fa-check"></i> Low dust formulation</li>
+                                <li><i class="fas fa-check"></i> Extended service life</li>
+                                <li><i class="fas fa-check"></i> Fits most vehicle models</li>
+                            </ul>
+                        </div>
+                        <div class="product-price">
+                            <span class="price">KES 2,500 - 6,000</span>
+                            <button class="btn buy-product" data-product="Brake Pads">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1603712610496-5362a2c93c80?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80');"></div>
+                    <div class="product-content">
+                        <h3><i class="fas fa-battery-full"></i> Car Batteries</h3>
+                        <p>Reliable batteries with long lifespan and excellent performance.</p>
+                        <div class="product-details">
+                            <ul>
+                                <li><i class="fas fa-check"></i> Maintenance-free design</li>
+                                <li><i class="fas fa-check"></i> High cold cranking amps</li>
+                                <li><i class="fas fa-check"></i> Vibration-resistant construction</li>
+                                <li><i class="fas fa-check"></i> 2-year warranty included</li>
+                            </ul>
+                        </div>
+                        <div class="product-price">
+                            <span class="price">KES 8,000 - 15,000</span>
+                            <button class="btn buy-product" data-product="Car Batteries">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="#products" class="btn btn-secondary">View All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section gallery" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Work Gallery</h2>
+                <p>Take a look at some of our recent repair and maintenance projects</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1622737133809-d95047b9e673?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Car Repair">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1563720223485-884d6d3e8c5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Brake Service">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Engine Work">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Tire Service">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1603712610496-5362a2c93c80?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Electrical Repair">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1622737133809-d95047b9e673?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Motorcycle Service">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Inspection Section -->
+    <section class="section inspection" id="inspection">
+        <div class="container">
+            <div class="section-title">
+                <h2>Vehicle Inspection</h2>
+                <p>Schedule a comprehensive vehicle inspection at our service centers</p>
+            </div>
+            
+            <div class="inspection-tabs">
+                <button class="inspection-tab active" data-tab="inspection-form">
+                    <i class="fas fa-clipboard-list"></i> Inspection Request
+                </button>
+                <button class="inspection-tab" data-tab="emergency-contact">
+                    <i class="fas fa-ambulance"></i> Emergency Contact
+                </button>
+                <button class="inspection-tab" data-tab="locations">
+                    <i class="fas fa-map-marker-alt"></i> Our Locations
+                </button>
+            </div>
+            
+            <!-- Inspection Form Tab -->
+            <div class="tab-content active" id="inspection-form">
+                <form class="inspection-form" id="vehicleInspectionForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="inspection-name"><i class="fas fa-user"></i> Full Name</label>
+                            <input type="text" id="inspection-name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="inspection-phone"><i class="fas fa-phone"></i> Phone Number</label>
+                            <input type="tel" id="inspection-phone" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="inspection-email"><i class="fas fa-envelope"></i> Email Address</label>
+                            <input type="email" id="inspection-email" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="inspection-vehicle"><i class="fas fa-car"></i> Vehicle Type</label>
+                            <select id="inspection-vehicle" class="form-control" required>
+                                <option value="">Select Vehicle Type</option>
+                                <option value="Car">Car</option>
+                                <option value="Motorcycle">Motorcycle</option>
+                                <option value="Truck">Truck</option>
+                                <option value="SUV">SUV</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="inspection-make"><i class="fas fa-industry"></i> Vehicle Make</label>
+                            <input type="text" id="inspection-make" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="inspection-model"><i class="fas fa-cog"></i> Vehicle Model</label>
+                            <input type="text" id="inspection-model" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="inspection-year"><i class="fas fa-calendar-alt"></i> Year of Manufacture</label>
+                            <input type="number" id="inspection-year" class="form-control" min="1990" max="2023">
+                        </div>
+                        <div class="form-group">
+                            <label for="inspection-location"><i class="fas fa-map-pin"></i> Preferred Location</label>
+                            <select id="inspection-location" class="form-control" required>
+                                <option value="">Select Location</option>
+                                <option value="Nairobi CBD">Nairobi CBD</option>
+                                <option value="Westlands">Westlands</option>
+                                <option value="Thika">Thika</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="inspection-date"><i class="fas fa-calendar-day"></i> Preferred Date</label>
+                        <input type="date" id="inspection-date" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="inspection-issues"><i class="fas fa-exclamation-triangle"></i> Describe Vehicle Issues</label>
+                        <textarea id="inspection-issues" class="form-control" placeholder="Please describe any issues you're experiencing with your vehicle..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label><i class="fas fa-tasks"></i> Inspection Services Needed</label>
+                        <div class="form-check">
+                            <input type="checkbox" id="engine-check" class="form-check-input">
+                            <label for="engine-check" class="form-check-label">Engine & Performance</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" id="brake-check" class="form-check-input">
+                            <label for="brake-check" class="form-check-label">Brake System</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" id="suspension-check" class="form-check-input">
+                            <label for="suspension-check" class="form-check-label">Suspension & Steering</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" id="electrical-check" class="form-check-input">
+                            <label for="electrical-check" class="form-check-label">Electrical System</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" id="tire-check" class="form-check-input">
+                            <label for="tire-check" class="form-check-label">Tires & Wheels</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" id="full-check" class="form-check-input">
+                            <label for="full-check" class="form-check-label">Full Comprehensive Inspection</label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> Submit Inspection Request</button>
+                </form>
+            </div>
+            
+            <!-- Emergency Contact Tab -->
+            <div class="tab-content" id="emergency-contact">
+                <div class="inspection-form">
+                    <div class="emergency-contact">
+                        <h3><i class="fas fa-ambulance"></i> Emergency Roadside Assistance</h3>
+                        <p>If you're experiencing a vehicle breakdown or emergency on the road, our team is available to provide immediate assistance.</p>
+                        
+                        <form id="emergencyForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="emergency-name"><i class="fas fa-user"></i> Your Name</label>
+                                    <input type="text" id="emergency-name" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="emergency-phone"><i class="fas fa-phone"></i> Contact Number</label>
+                                    <input type="tel" id="emergency-phone" class="form-control" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="emergency-location"><i class="fas fa-map-marker-alt"></i> Your Current Location</label>
+                                <input type="text" id="emergency-location" class="form-control" placeholder="Street, landmark, or area" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="emergency-vehicle"><i class="fas fa-car"></i> Vehicle Details</label>
+                                <input type="text" id="emergency-vehicle" class="form-control" placeholder="Make, model, color" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="emergency-issue"><i class="fas fa-exclamation-circle"></i> Emergency Description</label>
+                                <textarea id="emergency-issue" class="form-control" placeholder="Please describe your emergency and the assistance needed..." required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-warning"><i class="fas fa-phone-alt"></i> Request Emergency Assistance</button>
+                        </form>
+                        
+                        <div style="margin-top: 2rem;">
+                            <h4><i class="fas fa-phone-volume"></i> Emergency Hotline</h4>
+                            <p style="font-size: 1.5rem; font-weight: bold; color: var(--primary);">+254 711 222 333</p>
+                            <p>Available 24/7 for roadside emergencies</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Locations Tab -->
+            <div class="tab-content" id="locations">
+                <div class="locations-grid">
+                    <div class="location-card">
+                        <h3><i class="fas fa-map-marker-alt"></i> Nairobi CBD</h3>
+                        <div class="location-info">
+                            <p><i class="fas fa-location-arrow"></i> Tom Mboya Street, Nairobi</p>
+                            <p><i class="fas fa-phone"></i> +254 712 345 678</p>
+                            <p><i class="fas fa-clock"></i> Mon-Sat: 8:00 AM - 6:00 PM</p>
+                            <p><i class="fas fa-car"></i> Free parking available</p>
+                        </div>
+                        <a href="https://maps.google.com/?q=Tom+Mboya+Street,Nairobi" class="btn" target="_blank">Get Directions</a>
+                    </div>
+                    <div class="location-card">
+                        <h3><i class="fas fa-map-marker-alt"></i> Westlands</h3>
+                        <div class="location-info">
+                            <p><i class="fas fa-location-arrow"></i> Westlands Road, Nairobi</p>
+                            <p><i class="fas fa-phone"></i> +254 723 456 789</p>
+                            <p><i class="fas fa-clock"></i> Mon-Sat: 8:00 AM - 6:00 PM</p>
+                            <p><i class="fas fa-car"></i> Secure parking available</p>
+                        </div>
+                        <a href="https://maps.google.com/?q=Westlands+Road,Nairobi" class="btn" target="_blank">Get Directions</a>
+                    </div>
+                    <div class="location-card">
+                        <h3><i class="fas fa-map-marker-alt"></i> Thika</h3>
+                        <div class="location-info">
+                            <p><i class="fas fa-location-arrow"></i> General Kago Road, Thika</p>
+                            <p><i class="fas fa-phone"></i> +254 734 567 890</p>
+                            <p><i class="fas fa-clock"></i> Mon-Sat: 8:00 AM - 6:00 PM</p>
+                            <p><i class="fas fa-car"></i> Ample parking space</p>
+                        </div>
+                        <a href="https://maps.google.com/?q=General+Kago+Road,Thika" class="btn" target="_blank">Get Directions</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="section booking" id="booking">
+        <div class="container">
+            <div class="section-title">
+                <h2>Book a Service</h2>
+                <p>Fill out the form below and we'll contact you shortly to confirm your appointment</p>
+            </div>
+            <form class="booking-form" id="serviceBookingForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="vehicle">Vehicle Type</label>
+                    <select id="vehicle" class="form-control" required>
+                        <option value="">Select Vehicle Type</option>
+                        <option value="Car">Car</option>
+                        <option value="Motorcycle">Motorcycle</option>
+                        <option value="Truck">Truck</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="service">Service Needed</label>
+                    <select id="service" class="form-control" required>
+                        <option value="">Select Service</option>
+                        <option value="Engine Diagnostics & Repair">Engine Diagnostics & Repair</option>
+                        <option value="Brake System Service">Brake System Service</option>
+                        <option value="Oil Change & Lubrication">Oil Change & Lubrication</option>
+                        <option value="Tire Services">Tire Services</option>
+                        <option value="Electrical System Repair">Electrical System Repair</option>
+                        <option value="Suspension & Steering">Suspension & Steering</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="location">Preferred Location</label>
+                    <select id="location" class="form-control" required>
+                        <option value="">Select Location</option>
+                        <option value="Nairobi CBD">Nairobi CBD</option>
+                        <option value="Westlands">Westlands</option>
+                        <option value="Thika">Thika</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Additional Details</label>
+                    <textarea id="message" class="form-control" placeholder="Describe your vehicle issue or any specific requirements..."></textarea>
+                </div>
+                <button type="submit" class="btn">Submit Booking Request</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/254712345678?text=Hello%20AutoFix%20Kenya,%20I%20need%20assistance%20with%20my%20vehicle" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>AutoFix Kenya</h3>
+                    <p>Your trusted partner for car and motorcycle repair services in Kenya. We provide quality service with genuine parts and expert technicians.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/254712345678" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <a href="#home">Home</a>
+                    <a href="#services">Services</a>
+                    <a href="#products">Products</a>
+                    <a href="#gallery">Gallery</a>
+                    <a href="#inspection">Inspection</a>
+                    <a href="#booking">Book Service</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
+                    <p><i class="fas fa-phone"></i> +254 712 345 678</p>
+                    <p><i class="fas fa-envelope"></i> info@autofixkenya.com</p>
+                    <p><i class="fas fa-clock"></i> Mon-Sat: 8:00 AM - 6:00 PM</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 AutoFix Kenya. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('show');
+        });
+
+        // Service booking buttons
+        document.querySelectorAll('.book-service').forEach(button => {
+            button.addEventListener('click', function() {
+                const service = this.getAttribute('data-service');
+                document.getElementById('service').value = service;
+                document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Product purchase buttons
+        document.querySelectorAll('.buy-product').forEach(button => {
+            button.addEventListener('click', function() {
+                const product = this.getAttribute('data-product');
+                const message = `Hello AutoFix Kenya, I'm interested in purchasing: ${product}. Please provide more details.`;
+                const whatsappUrl = `https://wa.me/254712345678?text=${encodeURIComponent(message)}`;
+                window.open(whatsappUrl, '_blank');
+            });
+        });
+
+        // Form submission
+        document.getElementById('serviceBookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const vehicle = document.getElementById('vehicle').value;
+            const service = document.getElementById('service').value;
+            const location = document.getElementById('location').value;
+            const message = document.getElementById('message').value;
+            
+            const whatsappMessage = `New Service Booking Request:%0A%0AName: ${name}%0APhone: ${phone}%0AVehicle: ${vehicle}%0AService: ${service}%0ALocation: ${location}%0AMessage: ${message}`;
+            
+            const whatsappUrl = `https://wa.me/254712345678?text=${whatsappMessage}`;
+            
+            window.open(whatsappUrl, '_blank');
+            
+            // Reset form
+            this.reset();
+            
+            // Show confirmation
+            alert('Thank you for your booking request! We will contact you shortly via WhatsApp.');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId.startsWith('#')) {
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+
+        // Category filtering
+        document.querySelectorAll('.category-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const category = this.getAttribute('data-category');
+                filterServices(category);
+            });
+        });
+
+        function filterServices(category) {
+            document.querySelectorAll('.service-card').forEach(card => {
+                if(category === 'all' || card.getAttribute('data-category') === category) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+            
+            // Scroll to services section
+            document.getElementById('services').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+        
+        // Sample data for search
+        const searchData = [
+            { name: "Engine Diagnostics", type: "service", category: "engine" },
+            { name: "Brake Repair", type: "service", category: "brakes" },
+            { name: "Oil Change", type: "service", category: "maintenance" },
+            { name: "Tire Replacement", type: "service", category: "tires" },
+            { name: "Car Battery", type: "product", category: "electrical" },
+            { name: "Brake Pads", type: "product", category: "brakes" },
+            { name: "Engine Oil", type: "product", category: "maintenance" },
+            { name: "Suspension Repair", type: "service", category: "suspension" },
+            { name: "Electrical System", type: "service", category: "electrical" }
+        ];
+        
+        searchInput.addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            searchResults.innerHTML = '';
+            
+            if(query.length < 2) {
+                searchResults.style.display = 'none';
+                return;
+            }
+            
+            const filteredResults = searchData.filter(item => 
+                item.name.toLowerCase().includes(query)
+            );
+            
+            if(filteredResults.length > 0) {
+                filteredResults.forEach(item => {
+                    const resultItem = document.createElement('div');
+                    resultItem.className = 'search-result-item';
+                    resultItem.innerHTML = `<i class="fas fa-${item.type === 'service' ? 'tools' : 'shopping-cart'}"></i> ${item.name}`;
+                    
+                    resultItem.addEventListener('click', function() {
+                        searchInput.value = item.name;
+                        searchResults.style.display = 'none';
+                        
+                        if(item.type === 'service') {
+                            filterServices(item.category);
+                        } else {
+                            document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+                        }
+                    });
+                    
+                    searchResults.appendChild(resultItem);
+                });
+                
+                searchResults.style.display = 'block';
+            } else {
+                searchResults.style.display = 'none';
+            }
+        });
+        
+        // Close search results when clicking outside
+        document.addEventListener('click', function(e) {
+            if(!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                searchResults.style.display = 'none';
+            }
+        });
+        
+        // Search button functionality
+        document.getElementById('searchButton').addEventListener('click', function() {
+            const query = searchInput.value.toLowerCase();
+            if(query) {
+                const foundItem = searchData.find(item => 
+                    item.name.toLowerCase().includes(query)
+                );
+                
+                if(foundItem) {
+                    if(foundItem.type === 'service') {
+                        filterServices(foundItem.category);
+                    } else {
+                        document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+                    }
+                } else {
+                    alert('No results found for your search. Please try different keywords.');
+                }
+            }
+        });
+
+        // Inspection Tabs
+        document.querySelectorAll('.inspection-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs
+                document.querySelectorAll('.inspection-tab').forEach(t => {
+                    t.classList.remove('active');
+                });
+                
+                // Add active class to clicked tab
+                this.classList.add('active');
+                
+                // Hide all tab contents
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Show the corresponding tab content
+                const tabId = this.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Inspection Form Submission
+        document.getElementById('vehicleInspectionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('inspection-name').value;
+            const phone = document.getElementById('inspection-phone').value;
+            const email = document.getElementById('inspection-email').value;
+            const vehicleType = document.getElementById('inspection-vehicle').value;
+            const make = document.getElementById('inspection-make').value;
+            const model = document.getElementById('inspection-model').value;
+            const year = document.getElementById('inspection-year').value;
+            const location = document.getElementById('inspection-location').value;
+            const date = document.getElementById('inspection-date').value;
+            const issues = document.getElementById('inspection-issues').value;
+            
+            // Get selected services
+            const services = [];
+            if(document.getElementById('engine-check').checked) services.push('Engine & Performance');
+            if(document.getElementById('brake-check').checked) services.push('Brake System');
+            if(document.getElementById('suspension-check').checked) services.push('Suspension & Steering');
+            if(document.getElementById('electrical-check').checked) services.push('Electrical System');
+            if(document.getElementById('tire-check').checked) services.push('Tires & Wheels');
+            if(document.getElementById('full-check').checked) services.push('Full Comprehensive Inspection');
+            
+            const servicesText = services.length > 0 ? services.join(', ') : 'None specified';
+            
+            const whatsappMessage = `Vehicle Inspection Request:%0A%0AName: ${name}%0APhone: ${phone}%0AEmail: ${email}%0AVehicle: ${vehicleType}%0AMake: ${make}%0AModel: ${model}%0AYear: ${year}%0ALocation: ${location}%0ADate: ${date}%0AIssues: ${issues}%0AServices: ${servicesText}`;
+            
+            const whatsappUrl = `https://wa.me/254712345678?text=${encodeURIComponent(whatsappMessage)}`;
+            
+            window.open(whatsappUrl, '_blank');
+            
+            // Reset form
+            this.reset();
+            
+            // Show confirmation
+            alert('Thank you for your inspection request! We will contact you shortly to confirm your appointment.');
+        });
+
+        // Emergency Form Submission
+        document.getElementById('emergencyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('emergency-name').value;
+            const phone = document.getElementById('emergency-phone').value;
+            const location = document.getElementById('emergency-location').value;
+            const vehicle = document.getElementById('emergency-vehicle').value;
+            const issue = document.getElementById('emergency-issue').value;
+            
+            const whatsappMessage = `EMERGENCY ASSISTANCE REQUEST:%0A%0AName: ${name}%0APhone: ${phone}%0ALocation: ${location}%0AVehicle: ${vehicle}%0AIssue: ${issue}`;
+            
+            const whatsappUrl = `https://wa.me/254711222333?text=${encodeURIComponent(whatsappMessage)}`;
+            
+            window.open(whatsappUrl, '_blank');
+            
+            // Reset form
+            this.reset();
+            
+            // Show confirmation
+            alert('Emergency assistance request sent! Our team will contact you immediately.');
+        });
+    </script>
+</body>
+</html>
