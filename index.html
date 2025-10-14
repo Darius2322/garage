@@ -117,6 +117,7 @@
             display: none;
             font-size: 1.5rem;
             cursor: pointer;
+            z-index: 1001;
         }
         
         /* Search Panel */
@@ -124,6 +125,7 @@
             background-color: var(--accent);
             padding: 1rem 0;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative;
         }
         
         .search-container {
@@ -153,6 +155,48 @@
         
         .search-container button:hover {
             background-color: #c1121f;
+        }
+        
+        /* Enhanced Search Results */
+        .search-results {
+            display: none;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-height: 300px;
+            overflow-y: auto;
+            position: absolute;
+            width: 100%;
+            z-index: 100;
+            top: 100%;
+            left: 0;
+        }
+        
+        .search-results.active {
+            display: block;
+        }
+        
+        .search-result-item {
+            padding: 10px 15px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .search-result-item:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+        
+        .search-result-item i {
+            color: var(--primary);
+            width: 20px;
         }
         
         /* Hero Section */
@@ -220,6 +264,17 @@
         
         .btn-warning:hover {
             background-color: #d4ac3a;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
         }
         
         /* Categories Section */
@@ -496,7 +551,7 @@
             font-size: 2rem;
         }
         
-        /* Inspection Section */
+        /* Enhanced Inspection Section */
         .inspection {
             background-color: white;
         }
@@ -506,6 +561,7 @@
             justify-content: center;
             margin-bottom: 2rem;
             border-bottom: 1px solid #eee;
+            flex-wrap: wrap;
         }
         
         .inspection-tab {
@@ -521,6 +577,7 @@
             align-items: center;
             gap: 10px;
             border-bottom: 3px solid transparent;
+            white-space: nowrap;
         }
         
         .inspection-tab.active {
@@ -685,6 +742,200 @@
             border-radius: 10px;
         }
         
+        /* Contact Section */
+        .contact {
+            background-color: white;
+        }
+        
+        .contact-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+            flex-wrap: wrap;
+        }
+        
+        .contact-tab {
+            padding: 1rem 2rem;
+            background: none;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--dark);
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 3px solid transparent;
+            white-space: nowrap;
+        }
+        
+        .contact-tab.active {
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+        }
+        
+        .contact-tab:hover {
+            color: var(--primary);
+        }
+        
+        .contact-content {
+            display: none;
+        }
+        
+        .contact-content.active {
+            display: block;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .contact-card {
+            background-color: var(--light);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-card h3 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .contact-info {
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-info p {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .contact-info i {
+            color: var(--primary);
+            width: 20px;
+        }
+        
+        .contact-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.8rem 1rem;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-decoration: none;
+            color: var(--dark);
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .contact-btn:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .contact-btn.whatsapp {
+            background-color: #25D366;
+            color: white;
+            border-color: #25D366;
+        }
+        
+        .contact-btn.whatsapp:hover {
+            background-color: #128C7E;
+        }
+        
+        .contact-btn.call {
+            background-color: var(--success);
+            color: white;
+            border-color: var(--success);
+        }
+        
+        .contact-btn.call:hover {
+            background-color: #1e7d6b;
+        }
+        
+        .contact-btn.email {
+            background-color: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+        }
+        
+        .contact-btn.email:hover {
+            background-color: #14213d;
+        }
+        
+        /* Developer Section */
+        .developer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .developer-card {
+            background-color: var(--light);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .developer-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .developer-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            background-color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+        
+        .developer-card h3 {
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .developer-role {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .developer-bio {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
         /* WhatsApp Float */
         .whatsapp-float {
             position: fixed;
@@ -708,6 +959,125 @@
         .whatsapp-float:hover {
             background-color: #128C7E;
             transform: scale(1.1);
+        }
+        
+        /* Enhanced AI Assistant */
+        .ai-assistant {
+            position: fixed;
+            bottom: 90px;
+            right: 25px;
+            background-color: var(--primary);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .ai-assistant:hover {
+            background-color: #c1121f;
+            transform: scale(1.1);
+        }
+        
+        .ai-chat-container {
+            position: fixed;
+            bottom: 160px;
+            right: 25px;
+            width: 350px;
+            max-width: 90vw;
+            height: 450px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        .ai-chat-container.active {
+            display: flex;
+        }
+        
+        .ai-chat-header {
+            background: linear-gradient(to right, var(--secondary), var(--primary));
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .ai-chat-header h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+        
+        .ai-chat-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        
+        .ai-chat-messages {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        
+        .ai-message {
+            max-width: 80%;
+            padding: 0.8rem;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        .ai-message.user {
+            align-self: flex-end;
+            background-color: var(--accent);
+            border-bottom-right-radius: 2px;
+        }
+        
+        .ai-message.bot {
+            align-self: flex-start;
+            background-color: #f0f0f0;
+            border-bottom-left-radius: 2px;
+        }
+        
+        .ai-chat-input {
+            display: flex;
+            padding: 1rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .ai-chat-input input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px 0 0 5px;
+            font-size: 0.9rem;
+        }
+        
+        .ai-chat-input button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 1rem;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
         }
         
         /* Footer */
@@ -787,17 +1157,53 @@
         /* Responsive Design */
         @media (max-width: 768px) {
             .header-content {
-                flex-direction: column;
-                text-align: center;
+                flex-direction: row;
+                justify-content: space-between;
+                text-align: left;
                 gap: 1rem;
             }
             
             nav ul {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background: linear-gradient(to bottom, var(--secondary), var(--primary));
                 flex-direction: column;
-                gap: 0.5rem;
+                padding: 5rem 2rem 2rem;
+                transition: right 0.3s ease;
+                z-index: 1000;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+            }
+            
+            nav ul.show {
+                right: 0;
             }
             
             .mobile-menu {
+                display: block;
+                position: relative;
+                z-index: 1001;
+            }
+            
+            .mobile-menu.active i::before {
+                content: "\f00d"; /* FontAwesome close icon */
+            }
+            
+            .overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 999;
+                display: none;
+            }
+            
+            .overlay.active {
                 display: block;
             }
             
@@ -824,46 +1230,57 @@
                 gap: 0;
             }
             
-            .inspection-tabs {
+            .inspection-tabs, .contact-tabs {
                 flex-direction: column;
             }
             
-            .inspection-tab {
+            .inspection-tab, .contact-tab {
                 justify-content: center;
+            }
+            
+            .ai-chat-container {
+                width: 90vw;
+                right: 5vw;
+            }
+            
+            .contact-buttons {
+                flex-direction: column;
             }
         }
         
-        /* Search Results */
-        .search-results {
-            display: none;
-            background-color: white;
-            border-radius: 5px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            max-height: 300px;
-            overflow-y: auto;
-            position: absolute;
-            width: 100%;
-            z-index: 100;
-            top: 100%;
-        }
-        
-        .search-result-item {
-            padding: 10px 15px;
-            border-bottom: 1px solid #eee;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-        
-        .search-result-item:hover {
-            background-color: #f5f5f5;
-        }
-        
-        .search-result-item:last-child {
-            border-bottom: none;
+        @media (min-width: 1024px) {
+            .ai-chat-container {
+                width: 400px;
+                height: 500px;
+            }
+            
+            .ai-chat-header h3 {
+                font-size: 1.4rem;
+            }
+            
+            .ai-message {
+                font-size: 1rem;
+            }
         }
         
         .hidden {
             display: none;
+        }
+        
+        /* Loading indicator for AI */
+        .ai-loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s ease-in-out infinite;
+            margin-left: 10px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -890,11 +1307,15 @@
                         <li><a href="#gallery">Gallery</a></li>
                         <li><a href="#inspection">Inspection</a></li>
                         <li><a href="#booking">Book Service</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </nav>
             </div>
         </div>
     </header>
+    
+    <!-- Overlay for mobile menu -->
+    <div class="overlay"></div>
 
     <!-- Search Panel -->
     <section class="search-panel">
@@ -913,7 +1334,7 @@
             <h2>Professional Car & Motorcycle Repair Services in Kenya</h2>
             <p>We provide high-quality automotive repair and maintenance services with genuine parts and expert technicians. Your vehicle is in safe hands with AutoFix Kenya.</p>
             <a href="#booking" class="btn">Book Service Now</a>
-            <a href="https://wa.me/254712345678?text=Hello%20AutoFix%20Kenya,%20I%20need%20assistance%20with%20my%20vehicle" class="btn btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+            <a href="https://wa.me/2547111923477?text=Hello%20AutoFix%20Kenya,%20I%20need%20assistance%20with%20my%20vehicle" class="btn btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
         </div>
     </section>
 
@@ -1308,7 +1729,7 @@
                         
                         <div style="margin-top: 2rem;">
                             <h4><i class="fas fa-phone-volume"></i> Emergency Hotline</h4>
-                            <p style="font-size: 1.5rem; font-weight: bold; color: var(--primary);">+254 711 222 333</p>
+                            <p style="font-size: 1.5rem; font-weight: bold; color: var(--primary);">+2547 111 923 477</p>
                             <p>Available 24/7 for roadside emergencies</p>
                         </div>
                     </div>
@@ -1322,7 +1743,7 @@
                         <h3><i class="fas fa-map-marker-alt"></i> Nairobi CBD</h3>
                         <div class="location-info">
                             <p><i class="fas fa-location-arrow"></i> Tom Mboya Street, Nairobi</p>
-                            <p><i class="fas fa-phone"></i> +254 712 345 678</p>
+                            <p><i class="fas fa-phone"></i>+2547 111 923 477</p>
                             <p><i class="fas fa-clock"></i> Mon-Sat: 8:00 AM - 6:00 PM</p>
                             <p><i class="fas fa-car"></i> Free parking available</p>
                         </div>
@@ -1410,13 +1831,192 @@
         </div>
     </section>
 
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Get in touch with our team for any inquiries or assistance</p>
+            </div>
+            
+            <div class="contact-tabs">
+                <button class="contact-tab active" data-tab="business-contact">
+                    <i class="fas fa-building"></i> Business Contact
+                </button>
+                <button class="contact-tab" data-tab="developer-contact">
+                    <i class="fas fa-code"></i> Developer Contact
+                </button>
+            </div>
+            
+            <!-- Business Contact Tab -->
+            <div class="contact-content active" id="business-contact">
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <h3><i class="fas fa-info-circle"></i> General Inquiries</h3>
+                        <div class="contact-info">
+                            <p><i class="fas fa-phone"></i>+2547 111 923 477</p>
+                            <p><i class="fas fa-envelope"></i> info@autofixkenya.com</p>
+                            <p><i class="fas fa-clock"></i> Mon-Sat: 8:00 AM - 6:00 PM</p>
+                            <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
+                        </div>
+                        <div class="contact-buttons">
+                            <a href="tel:+2547111923477" class="contact-btn call">
+                                <i class="fas fa-phone"></i> Call Now
+                            </a>
+                            <a href="https://wa.me/2547111923477?text=Hello%20AutoFix%20Kenya,%20I%20have%20a%20general%20inquiry%20about%20your%20services" class="contact-btn whatsapp" target="_blank">
+                                <i class="fab fa-whatsapp"></i> WhatsApp General Inquiry
+                            </a>
+                            <a href="mailto:info@autofixkenya.com?subject=General%20Inquiry%20-%20AutoFix%20Kenya&body=Hello%20AutoFix%20Kenya,%0A%0AI%20would%20like%20to%20inquire%20about%20your%20services." class="contact-btn email">
+                                <i class="fas fa-envelope"></i> Email General Inquiry
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <h3><i class="fas fa-tools"></i> Service Department</h3>
+                        <div class="contact-info">
+                            <p><i class="fas fa-phone"></i>+2547 111 923 477</p>
+                            <p><i class="fas fa-envelope"></i> services@autofixkenya.com</p>
+                            <p><i class="fas fa-clock"></i> Mon-Sat: 8:00 AM - 6:00 PM</p>
+                            <p><i class="fas fa-wrench"></i> Service appointments</p>
+                        </div>
+                        <div class="contact-buttons">
+                            <a href="tel:+2547111923477" class="contact-btn call">
+                                <i class="fas fa-phone"></i> Call Service Dept
+                            </a>
+                            <a href="https://wa.me/2547111923477?text=Hello%20AutoFix%20Kenya%20Service%20Department,%20I%20need%20assistance%20with%20my%20vehicle%20service." class="contact-btn whatsapp" target="_blank">
+                                <i class="fab fa-whatsapp"></i> WhatsApp Service Dept
+                            </a>
+                            <a href="mailto:services@autofixkenya.com?subject=Vehicle%20Service%20Inquiry&body=Hello%20AutoFix%20Kenya%20Service%20Department,%0A%0AI%20would%20like%20to%20schedule%20a%20service%20for%20my%20vehicle." class="contact-btn email">
+                                <i class="fas fa-envelope"></i> Email Service Dept
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <h3><i class="fas fa-shopping-cart"></i> Parts & Products</h3>
+                        <div class="contact-info">
+                            <p><i class="fas fa-phone"></i>+2547 111 923 477</p>
+                            <p><i class="fas fa-envelope"></i> parts@autofixkenya.com</p>
+                            <p><i class="fas fa-clock"></i> Mon-Sat: 8:00 AM - 6:00 PM</p>
+                            <p><i class="fas fa-box"></i> Genuine parts available</p>
+                        </div>
+                        <div class="contact-buttons">
+                            <a href="tel:+2547111923477" class="contact-btn call">
+                                <i class="fas fa-phone"></i> Call Parts Dept
+                            </a>
+                            <a href="https://wa.me/2547111923477?text=Hello%20AutoFix%20Kenya%20Parts%20Department,%20I%20need%20information%20about%20auto%20parts%20and%20products." class="contact-btn whatsapp" target="_blank">
+                                <i class="fab fa-whatsapp"></i> WhatsApp Parts Dept
+                            </a>
+                            <a href="mailto:parts@autofixkenya.com?subject=Auto%20Parts%20Inquiry&body=Hello%20AutoFix%20Kenya%20Parts%20Department,%0A%0AI%20would%20like%20information%20about%20auto%20parts%20for%20my%20vehicle." class="contact-btn email">
+                                <i class="fas fa-envelope"></i> Email Parts Dept
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Developer Contact Tab -->
+            <div class="contact-content" id="developer-contact">
+                <div class="developer-grid">
+                    <div class="developer-card">
+                        <div class="developer-avatar">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3>John Kamau</h3>
+                        <div class="developer-role">Lead Developer & UI/UX Designer</div>
+                        <div class="developer-bio">
+                            Full-stack developer specializing in creating responsive web applications and user-friendly interfaces. Experienced in automotive industry solutions.
+                        </div>
+                        <div class="contact-buttons">
+                            <a href="tel:+2547111923477" class="contact-btn call">
+                                <i class="fas fa-phone"></i> Call Developer
+                            </a>
+                            <a href="https://wa.me/2547111923477?text=Hello%20John,%20I%20saw%20your%20work%20on%20the%20AutoFix%20Kenya%20website%20and%20I%27m%20interested%20in%20discussing%20a%20project." class="contact-btn whatsapp" target="_blank">
+                                <i class="fab fa-whatsapp"></i> WhatsApp Developer
+                            </a>
+                            <a href="mailto:john.kamau@autofixkenya.com?subject=Web%20Development%20Inquiry&body=Hello%20John,%0A%0AI%20saw%20your%20work%20on%20the%20AutoFix%20Kenya%20website%20and%20I%27m%20interested%20in%20discussing%20a%20web%20development%20project." class="contact-btn email">
+                                <i class="fas fa-envelope"></i> Email Developer
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="developer-card">
+                        <div class="developer-avatar">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3>Sarah Mwangi</h3>
+                        <div class="developer-role">Backend Developer & Database Specialist</div>
+                        <div class="developer-bio">
+                            Backend developer with expertise in database design, API development, and system architecture. Focused on creating scalable automotive solutions.
+                        </div>
+                        <div class="contact-buttons">
+                            <a href="tel:+254722334455" class="contact-btn call">
+                                <i class="fas fa-phone"></i> Call Developer
+                            </a>
+                            <a href="https://wa.me/254722334455?text=Hello%20Sarah,%20I%20saw%20your%20work%20on%20the%20AutoFix%20Kenya%20website%20and%20I%27m%20interested%20in%20backend%20development%20services." class="contact-btn whatsapp" target="_blank">
+                                <i class="fab fa-whatsapp"></i> WhatsApp Developer
+                            </a>
+                            <a href="mailto:sarah.mwangi@autofixkenya.com?subject=Backend%20Development%20Inquiry&body=Hello%20Sarah,%0A%0AI%20saw%20your%20work%20on%20the%20AutoFix%20Kenya%20website%20and%20I%27m%20interested%20in%20backend%20development%20services." class="contact-btn email">
+                                <i class="fas fa-envelope"></i> Email Developer
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="developer-card">
+                        <div class="developer-avatar">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>David Ochieng</h3>
+                        <div class="developer-role">Mobile App Developer</div>
+                        <div class="developer-bio">
+                            Mobile application developer specializing in iOS and Android apps for automotive services. Creating seamless mobile experiences for customers.
+                        </div>
+                        <div class="contact-buttons">
+                            <a href="tel:+254733445566" class="contact-btn call">
+                                <i class="fas fa-phone"></i> Call Developer
+                            </a>
+                            <a href="https://wa.me/254733445566?text=Hello%20David,%20I%20saw%20your%20work%20on%20the%20AutoFix%20Kenya%20website%20and%20I%27m%20interested%20in%20mobile%20app%20development." class="contact-btn whatsapp" target="_blank">
+                                <i class="fab fa-whatsapp"></i> WhatsApp Developer
+                            </a>
+                            <a href="mailto:david.ochieng@autofixkenya.com?subject=Mobile%20App%20Development%20Inquiry&body=Hello%20David,%0A%0AI%20saw%20your%20work%20on%20the%20AutoFix%20Kenya%20website%20and%20I%27m%20interested%20in%20mobile%20app%20development%20services." class="contact-btn email">
+                                <i class="fas fa-envelope"></i> Email Developer
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- WhatsApp Float -->
-    <a href="https://wa.me/254712345678?text=Hello%20AutoFix%20Kenya,%20I%20need%20assistance%20with%20my%20vehicle" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/2547111923477?text=Hello%20AutoFix%20Kenya,%20I%20need%20assistance%20with%20my%20vehicle" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
+    <!-- AI Assistant -->
+    <div class="ai-assistant">
+        <i class="fas fa-robot"></i>
+    </div>
+    
+    <div class="ai-chat-container">
+        <div class="ai-chat-header">
+            <h3>AutoFix AI Assistant</h3>
+            <button class="ai-chat-close"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="ai-chat-messages">
+            <div class="ai-message bot">
+                Hello! I'm your AutoFix AI Assistant. How can I help you with your vehicle today?
+            </div>
+        </div>
+        <div class="ai-chat-input">
+            <input type="text" placeholder="Ask about services, pricing, or issues..." id="ai-chat-input">
+            <button id="ai-send-btn"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
     <!-- Footer -->
-    <footer id="contact">
+    <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
@@ -1426,7 +2026,7 @@
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/254712345678" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://wa.me/2547111923477" target="_blank"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
                 <div class="footer-column">
@@ -1437,27 +2037,254 @@
                     <a href="#gallery">Gallery</a>
                     <a href="#inspection">Inspection</a>
                     <a href="#booking">Book Service</a>
+                    <a href="#contact">Contact</a>
                 </div>
                 <div class="footer-column">
                     <h3>Contact Us</h3>
                     <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
-                    <p><i class="fas fa-phone"></i> +254 712 345 678</p>
+                    <p><i class="fas fa-phone"></i>+2547 111 923 477</p>
                     <p><i class="fas fa-envelope"></i> info@autofixkenya.com</p>
                     <p><i class="fas fa-clock"></i> Mon-Sat: 8:00 AM - 6:00 PM</p>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 AutoFix Kenya. All Rights Reserved.</p>
+                <p>&copy; 2023 AutoFix Kenya. All Rights Reserved. | Website developed by AutoFix Tech Team</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Mobile menu toggle
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            document.querySelector('nav ul').classList.toggle('show');
+        // Enhanced Mobile Menu Toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navMenu = document.querySelector('nav ul');
+        const overlay = document.querySelector('.overlay');
+        
+        mobileMenu.addEventListener('click', function() {
+            navMenu.classList.toggle('show');
+            overlay.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+        
+        overlay.addEventListener('click', function() {
+            navMenu.classList.remove('show');
+            overlay.classList.remove('active');
+            mobileMenu.classList.remove('active');
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('show');
+                overlay.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
         });
 
+        // Enhanced Search Functionality with Live Results
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+        
+        // Extended search data
+        const searchData = [
+            { name: "Engine Diagnostics", type: "service", category: "engine", icon: "fas fa-cogs" },
+            { name: "Brake Repair", type: "service", category: "brakes", icon: "fas fa-stop-circle" },
+            { name: "Oil Change", type: "service", category: "maintenance", icon: "fas fa-oil-can" },
+            { name: "Tire Replacement", type: "service", category: "tires", icon: "fas fa-tachometer-alt" },
+            { name: "Car Battery", type: "product", category: "electrical", icon: "fas fa-battery-full" },
+            { name: "Brake Pads", type: "product", category: "brakes", icon: "fas fa-stop-circle" },
+            { name: "Engine Oil", type: "product", category: "maintenance", icon: "fas fa-oil-can" },
+            { name: "Suspension Repair", type: "service", category: "suspension", icon: "fas fa-car-side" },
+            { name: "Electrical System", type: "service", category: "electrical", icon: "fas fa-bolt" },
+            { name: "Wheel Alignment", type: "service", category: "suspension", icon: "fas fa-compass" },
+            { name: "Air Filter", type: "product", category: "maintenance", icon: "fas fa-wind" },
+            { name: "Spark Plugs", type: "product", category: "engine", icon: "fas fa-bolt" }
+        ];
+        
+        searchInput.addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            searchResults.innerHTML = '';
+            
+            if(query.length < 2) {
+                searchResults.classList.remove('active');
+                return;
+            }
+            
+            const filteredResults = searchData.filter(item => 
+                item.name.toLowerCase().includes(query)
+            );
+            
+            if(filteredResults.length > 0) {
+                filteredResults.forEach(item => {
+                    const resultItem = document.createElement('div');
+                    resultItem.className = 'search-result-item';
+                    resultItem.innerHTML = `<i class="${item.icon}"></i> ${item.name} <span style="margin-left: auto; font-size: 0.8rem; color: #666;">${item.type}</span>`;
+                    
+                    resultItem.addEventListener('click', function() {
+                        searchInput.value = item.name;
+                        searchResults.classList.remove('active');
+                        
+                        if(item.type === 'service') {
+                            filterServices(item.category);
+                        } else {
+                            document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+                        }
+                    });
+                    
+                    searchResults.appendChild(resultItem);
+                });
+                
+                searchResults.classList.add('active');
+            } else {
+                searchResults.classList.remove('active');
+            }
+        });
+        
+        // Close search results when clicking outside
+        document.addEventListener('click', function(e) {
+            if(!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                searchResults.classList.remove('active');
+            }
+        });
+        
+        // Search button functionality
+        document.getElementById('searchButton').addEventListener('click', function() {
+            const query = searchInput.value.toLowerCase();
+            if(query) {
+                const foundItem = searchData.find(item => 
+                    item.name.toLowerCase().includes(query)
+                );
+                
+                if(foundItem) {
+                    if(foundItem.type === 'service') {
+                        filterServices(foundItem.category);
+                    } else {
+                        document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+                    }
+                } else {
+                    alert('No results found for your search. Please try different keywords.');
+                }
+            }
+        });
+
+        // Contact Tabs
+        document.querySelectorAll('.contact-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs
+                document.querySelectorAll('.contact-tab').forEach(t => {
+                    t.classList.remove('active');
+                });
+                
+                // Add active class to clicked tab
+                this.classList.add('active');
+                
+                // Hide all tab contents
+                document.querySelectorAll('.contact-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Show the corresponding tab content
+                const tabId = this.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // AI Assistant with API Integration
+        const aiAssistant = document.querySelector('.ai-assistant');
+        const aiChatContainer = document.querySelector('.ai-chat-container');
+        const aiChatClose = document.querySelector('.ai-chat-close');
+        const aiChatInput = document.getElementById('ai-chat-input');
+        const aiSendBtn = document.getElementById('ai-send-btn');
+        const aiChatMessages = document.querySelector('.ai-chat-messages');
+        
+        // AI Assistant Toggle
+        aiAssistant.addEventListener('click', function() {
+            aiChatContainer.classList.toggle('active');
+        });
+        
+        aiChatClose.addEventListener('click', function() {
+            aiChatContainer.classList.remove('active');
+        });
+        
+        // AI Message Handling with API
+        function addMessage(text, isUser = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `ai-message ${isUser ? 'user' : 'bot'}`;
+            messageDiv.textContent = text;
+            aiChatMessages.appendChild(messageDiv);
+            aiChatMessages.scrollTop = aiChatMessages.scrollHeight;
+        }
+        
+        // Function to call AI API (using a mock for demonstration)
+        async function getAIResponse(userMessage) {
+            // In a real implementation, you would call an actual API here
+            // For demonstration, we'll use a mock response with car-related answers
+            
+            // Simulate API call delay
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            const message = userMessage.toLowerCase();
+            
+            // Car-related responses
+            if (message.includes('engine') || message.includes('motor')) {
+                return "Engine issues can range from simple maintenance to complex repairs. Common problems include overheating, strange noises, or loss of power. I recommend bringing your vehicle to our service center for a proper diagnosis.";
+            } else if (message.includes('brake') || message.includes('stop')) {
+                return "Brake problems are serious safety concerns. Symptoms include squeaking, grinding, pulling to one side, or a soft brake pedal. We offer comprehensive brake inspections and repairs using quality parts.";
+            } else if (message.includes('oil') || message.includes('lubricat')) {
+                return "Regular oil changes are crucial for engine health. We recommend changing oil every 5,000-7,500 km depending on your vehicle and driving conditions. We use high-quality synthetic and conventional oils.";
+            } else if (message.includes('tire') || message.includes('wheel')) {
+                return "Tire issues can include uneven wear, vibrations, or pressure problems. We offer tire rotation, balancing, alignment, and replacement services. Proper tire maintenance improves safety and fuel efficiency.";
+            } else if (message.includes('battery') || message.includes('electrical')) {
+                return "Electrical problems can manifest as difficulty starting, dim lights, or accessory malfunctions. We test batteries, alternators, and starters to diagnose electrical issues accurately.";
+            } else if (message.includes('price') || message.includes('cost') || message.includes('how much')) {
+                return "Our pricing varies based on the service and parts required. For accurate pricing, I'd need to know the specific service your vehicle needs. You can also check our services section for starting prices.";
+            } else if (message.includes('service') || message.includes('repair') || message.includes('fix')) {
+                return "We offer a wide range of automotive services including engine repair, brake service, suspension work, electrical diagnostics, and regular maintenance. What specific issue are you experiencing?";
+            } else if (message.includes('appointment') || message.includes('book') || message.includes('schedule')) {
+                return "You can book an appointment through our website or by calling us directly. Would you like me to direct you to our booking section?";
+            } else if (message.includes('location') || message.includes('where') || message.includes('address')) {
+                return "We have three service centers in Kenya: Nairobi CBD (Tom Mboya Street), Westlands (Westlands Road), and Thika (General Kago Road). Which location is most convenient for you?";
+            } else if (message.includes('hour') || message.includes('open') || message.includes('time')) {
+                return "Our service centers are open Monday to Saturday from 8:00 AM to 6:00 PM. We're closed on Sundays.";
+            } else if (message.includes('warranty') || message.includes('guarantee')) {
+                return "We offer warranties on both our services and parts. Service warranties typically cover 90 days or 5,000 km, while parts come with manufacturer warranties. Specific terms depend on the service and parts used.";
+            } else {
+                return "I'm specialized in automotive questions. Could you provide more details about your vehicle issue? For complex problems, I recommend scheduling an inspection with our technicians.";
+            }
+        }
+        
+        function handleUserMessage() {
+            const userMessage = aiChatInput.value.trim();
+            if (userMessage) {
+                addMessage(userMessage, true);
+                aiChatInput.value = '';
+                
+                // Show loading indicator
+                const loadingDiv = document.createElement('div');
+                loadingDiv.className = 'ai-message bot';
+                loadingDiv.innerHTML = 'Thinking<span class="ai-loading"></span>';
+                aiChatMessages.appendChild(loadingDiv);
+                aiChatMessages.scrollTop = aiChatMessages.scrollHeight;
+                
+                // Get AI response
+                getAIResponse(userMessage).then(aiResponse => {
+                    // Remove loading indicator
+                    aiChatMessages.removeChild(loadingDiv);
+                    
+                    // Add AI response
+                    addMessage(aiResponse);
+                });
+            }
+        }
+        
+        aiSendBtn.addEventListener('click', handleUserMessage);
+        
+        aiChatInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                handleUserMessage();
+            }
+        });
+
+        // Rest of the JavaScript code remains the same
         // Service booking buttons
         document.querySelectorAll('.book-service').forEach(button => {
             button.addEventListener('click', function() {
@@ -1472,7 +2299,7 @@
             button.addEventListener('click', function() {
                 const product = this.getAttribute('data-product');
                 const message = `Hello AutoFix Kenya, I'm interested in purchasing: ${product}. Please provide more details.`;
-                const whatsappUrl = `https://wa.me/254712345678?text=${encodeURIComponent(message)}`;
+                const whatsappUrl = `https://wa.me/2547111923477?text=${encodeURIComponent(message)}`;
                 window.open(whatsappUrl, '_blank');
             });
         });
@@ -1490,7 +2317,7 @@
             
             const whatsappMessage = `New Service Booking Request:%0A%0AName: ${name}%0APhone: ${phone}%0AVehicle: ${vehicle}%0AService: ${service}%0ALocation: ${location}%0AMessage: ${message}`;
             
-            const whatsappUrl = `https://wa.me/254712345678?text=${whatsappMessage}`;
+            const whatsappUrl = `https://wa.me/2547111923477?text=${whatsappMessage}`;
             
             window.open(whatsappUrl, '_blank');
             
@@ -1536,89 +2363,6 @@
             // Scroll to services section
             document.getElementById('services').scrollIntoView({ behavior: 'smooth' });
         }
-
-        // Search functionality
-        const searchInput = document.getElementById('searchInput');
-        const searchResults = document.getElementById('searchResults');
-        
-        // Sample data for search
-        const searchData = [
-            { name: "Engine Diagnostics", type: "service", category: "engine" },
-            { name: "Brake Repair", type: "service", category: "brakes" },
-            { name: "Oil Change", type: "service", category: "maintenance" },
-            { name: "Tire Replacement", type: "service", category: "tires" },
-            { name: "Car Battery", type: "product", category: "electrical" },
-            { name: "Brake Pads", type: "product", category: "brakes" },
-            { name: "Engine Oil", type: "product", category: "maintenance" },
-            { name: "Suspension Repair", type: "service", category: "suspension" },
-            { name: "Electrical System", type: "service", category: "electrical" }
-        ];
-        
-        searchInput.addEventListener('input', function() {
-            const query = this.value.toLowerCase();
-            searchResults.innerHTML = '';
-            
-            if(query.length < 2) {
-                searchResults.style.display = 'none';
-                return;
-            }
-            
-            const filteredResults = searchData.filter(item => 
-                item.name.toLowerCase().includes(query)
-            );
-            
-            if(filteredResults.length > 0) {
-                filteredResults.forEach(item => {
-                    const resultItem = document.createElement('div');
-                    resultItem.className = 'search-result-item';
-                    resultItem.innerHTML = `<i class="fas fa-${item.type === 'service' ? 'tools' : 'shopping-cart'}"></i> ${item.name}`;
-                    
-                    resultItem.addEventListener('click', function() {
-                        searchInput.value = item.name;
-                        searchResults.style.display = 'none';
-                        
-                        if(item.type === 'service') {
-                            filterServices(item.category);
-                        } else {
-                            document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
-                        }
-                    });
-                    
-                    searchResults.appendChild(resultItem);
-                });
-                
-                searchResults.style.display = 'block';
-            } else {
-                searchResults.style.display = 'none';
-            }
-        });
-        
-        // Close search results when clicking outside
-        document.addEventListener('click', function(e) {
-            if(!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
-                searchResults.style.display = 'none';
-            }
-        });
-        
-        // Search button functionality
-        document.getElementById('searchButton').addEventListener('click', function() {
-            const query = searchInput.value.toLowerCase();
-            if(query) {
-                const foundItem = searchData.find(item => 
-                    item.name.toLowerCase().includes(query)
-                );
-                
-                if(foundItem) {
-                    if(foundItem.type === 'service') {
-                        filterServices(foundItem.category);
-                    } else {
-                        document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
-                    }
-                } else {
-                    alert('No results found for your search. Please try different keywords.');
-                }
-            }
-        });
 
         // Inspection Tabs
         document.querySelectorAll('.inspection-tab').forEach(tab => {
@@ -1670,7 +2414,7 @@
             
             const whatsappMessage = `Vehicle Inspection Request:%0A%0AName: ${name}%0APhone: ${phone}%0AEmail: ${email}%0AVehicle: ${vehicleType}%0AMake: ${make}%0AModel: ${model}%0AYear: ${year}%0ALocation: ${location}%0ADate: ${date}%0AIssues: ${issues}%0AServices: ${servicesText}`;
             
-            const whatsappUrl = `https://wa.me/254712345678?text=${encodeURIComponent(whatsappMessage)}`;
+            const whatsappUrl = `https://wa.me/2547111923477?text=${encodeURIComponent(whatsappMessage)}`;
             
             window.open(whatsappUrl, '_blank');
             
@@ -1693,7 +2437,7 @@
             
             const whatsappMessage = `EMERGENCY ASSISTANCE REQUEST:%0A%0AName: ${name}%0APhone: ${phone}%0ALocation: ${location}%0AVehicle: ${vehicle}%0AIssue: ${issue}`;
             
-            const whatsappUrl = `https://wa.me/254711222333?text=${encodeURIComponent(whatsappMessage)}`;
+            const whatsappUrl = `https://wa.me/2547111923477?text=${encodeURIComponent(whatsappMessage)}`;
             
             window.open(whatsappUrl, '_blank');
             
